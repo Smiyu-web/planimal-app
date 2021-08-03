@@ -1,67 +1,47 @@
-import React from "react";
-import { connect } from "react-redux";
-import styled from "styled-components";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import Axios from "axios";
 
-import plant1 from "../../assets/img/plant-1.jpeg";
 import { addItem } from "../../redux/cart/cart.action";
 import CustomBtn from "../UIkit/CustomBtn";
-import PRODUCT_DATA from "../../pages/products/products.data";
-
-const Hover = styled.div`
-  .hover {
-    position: relative;
-    width: 200px;
-    height: auto;
-  }
-  .hover-img img {
-    width: 100%;
-    height: 310px;
-  }
-  .hover .hover-btn {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transition: 0.3s ease-in-out;
-  }
-  .hover .hover-btn {
-    position: absolute;
-    padding: 250px 30px 0px 30px;
-  }
-  .hover:hover .hover-btn {
-    opacity: 1;
-  }
-`;
-
-console.log(PRODUCT_DATA);
+import { setListItems, selectListItems } from "../../features/itemSlice";
 
 const Product = ({ addItemProps, item }) => {
+  const dispatch = useDispatch();
+  const lists = useSelector(selectListItems);
+
+  useEffect(async () => {
+    try {
+      // setLoading(true);
+      const result = await Axios("http://localhost:2000/items/");
+      dispatch(setListItems(result.data));
+      console.log(result.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
   return (
     <>
-      {PRODUCT_DATA.map((item) => {
-        // console.log(item.id);
+      {lists?.map((item) => {
+        console.log(item.id);
         return (
-          <div id={item.id} className="w-52 m-12">
-            <Hover className="hover">
-              <div className="hover">
-                <div className="hover-img">
-                  <img src={item.imageUrl} alt="cafe" />
-                </div>
-                <div className="hover-btn">
-                  <CustomBtn
-                    button="ADD ITEM"
-                    onClick={() => addItemProps(item)}
-                  />
-                </div>
+          <div key={item.id} className="w-52 m-12">
+            <div className="product">
+              <div className="product_img">
+                <img src={item.image} alt="cafe" className="product_img" />
               </div>
-            </Hover>
+              <div className="product_btn">
+                <CustomBtn
+                  button="ADD ITEM"
+                  onClick={() => addItemProps(item)}
+                />
+              </div>
+            </div>
 
             <div className="flex justify-between mx-2 mt-2">
-              <h3>{item.name}</h3>
-              <h3>${item.price}</h3>
+              <h3>{item.title}</h3>
+              <h3>${item.retailPrice}</h3>
             </div>
             <h6 className="text-primary ml-1">{item.brand}</h6>
           </div>
@@ -71,8 +51,4 @@ const Product = ({ addItemProps, item }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItemProps: (item) => dispatch(addItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(Product);
+export default Product;

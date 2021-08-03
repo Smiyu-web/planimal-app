@@ -105,4 +105,17 @@
     text-sm text-white font-normal text-center
     bg-secondary rounded-full;
   }
+  /* product */
+  .product {
+    @apply relative w-52 h-80;
+  }
+  .product_img {
+    @apply w-full h-80;
+  }
+  .product_btn {
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease-in-out;
+    @apply absolute w-full h-80 top-0 left-0
+    opacity-0 hover:opacity-100 pt-60 px-8;
+  }
 }

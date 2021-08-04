@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CustomBtn from "../UIkit/CustomBtn";
+import CustomBtn from "../UIkit/CustomeBtn";
 
 const Input = styled.div`
   .cp_iptxt {

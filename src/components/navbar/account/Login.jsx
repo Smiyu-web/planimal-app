@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import Axios from "axios";
 
-import { login } from ".././../../features/userSlice";
+// import { login } from ".././../../features/userSlice";
 import ErrorNotice from "../../UIkit/ErrorNotice";
 
 const Signup = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

@@ -2,21 +2,17 @@ const router = require("express").Router();
 const multer = require("multer");
 const Item = require("../models/item.model");
 const mongoose = require("mongoose");
+const path = require("path");
 
-// const storage = multer.diskStorage({
-//   destination: (req, file, callback) => {
-//     callback(null, "/uploads/images");
-//   },
-//   filename: (req, file, callback) => {
-//     callback(null, file.originalname);
-//   },
-// });
-
-// const upload = multer({ storage: storage });
-// const upload = multer({ dest: __dirname + "/uploads/" });
-const upload = multer({
-  dest: __dirname + "../../src/assets/uploads",
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, path.join(__dirname, "../../public/assets/uploads"));
+  },
+  filename: (req, file, callback) => {
+    callback(null, file.originalname);
+  },
 });
+const upload = multer({ storage: storage });
 
 router.get("/", async (req, res, next) => {
   try {

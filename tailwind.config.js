@@ -14,6 +14,9 @@ module.exports = {
       height: {
         "80vh": "80vh",
       },
+      width: {
+        "30rem": "30rem",
+      },
       backgroundImage: (theme) => ({
         "hero-img": "url('/src/assets/img/planimal-top.jpeg')",
       }),

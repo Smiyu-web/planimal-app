@@ -1,7 +1,6 @@
 import React from "react";
 import Account from "../navbar/account/Account";
 import Cart from "../navbar/cart/Cart";
-import { Hamburger } from "./hamburger/Hamburger";
 import Menu from "./hamburger/Menu";
 
 const Navbar = () => {

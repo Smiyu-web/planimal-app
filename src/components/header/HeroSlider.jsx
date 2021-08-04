@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
 import Cactus from "../../assets/img/cactus.jpeg";
 import Top from "../../assets/img/planimal-top.jpeg";

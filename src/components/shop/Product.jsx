@@ -1,21 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Axios from "axios";
 
-import { addItem } from "../../redux/cart/cart.action";
-import CustomBtn from "../UIkit/CustomBtn";
+import CustomeBtn from "../UIkit/CustomeBtn";
 import { setListItems, selectListItems } from "../../features/itemSlice";
+import { setCartItems } from "../../features/cartSlice";
 
-const Product = ({ addItemProps, item }) => {
+const Product = ({ addItemProps }) => {
   const dispatch = useDispatch();
   const lists = useSelector(selectListItems);
 
+  // const [lists, setLists] = useState([]);
+
   useEffect(async () => {
     try {
-      // setLoading(true);
-      const result = await Axios("http://localhost:2000/items/");
+      const result = await Axios("http://localhost:2000/items");
       dispatch(setListItems(result.data));
-      console.log(result.data);
+      // setLists(result.data);
     } catch (err) {
       console.log(err);
     }
@@ -24,17 +25,21 @@ const Product = ({ addItemProps, item }) => {
   return (
     <>
       {lists?.map((item) => {
-        console.log(item.id);
         return (
-          <div key={item.id} className="w-52 m-12">
+          <div key={item.id} className="w-52 m-12 cursor-pointer">
             <div className="product">
               <div className="product_img">
-                <img src={item.image} alt="cafe" className="product_img" />
+                <img
+                  src={`/assets/uploads/${item.image}`}
+                  alt="cafe"
+                  className="product_img"
+                />
               </div>
               <div className="product_btn">
-                <CustomBtn
+                <CustomeBtn
+                  className="customeBtn bg-white text-primary border-primary"
                   button="ADD ITEM"
-                  onClick={() => addItemProps(item)}
+                  onClick={() => dispatch(setCartItems(item))}
                 />
               </div>
             </div>

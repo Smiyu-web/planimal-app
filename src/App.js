@@ -19,7 +19,7 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/add-product" component={AddProduct} />
-          <Route path="/product/" component={ProductDetail} />
+          <Route path="/product/:id" component={ProductDetail} />
         </div>
       </Router>
     </div>

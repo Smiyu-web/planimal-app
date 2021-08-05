@@ -1,7 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
-import { ReactComponent as ShoppingCart } from "../../../assets/img/shopping-cart-solid.svg";
-import { toggleCartHidden } from "../../../redux/cart/cart.action";
+import { useDispatch } from "react-redux";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
+import { setCartOpen } from "../../../features/cartSlice";
 
 function totalQty(arr) {
   let sum = 0;
@@ -10,23 +13,29 @@ function totalQty(arr) {
   }
   return sum;
 }
-const CartIcon = ({ toggleCartHiddenProps, cartItemProps }) => {
+
+const CartIcon = () => {
+  const dispatch = useDispatch();
+
+  const handleCartOpen = () => {
+    dispatch(setCartOpen());
+  };
+
   return (
-    <div className="relative">
-      <ShoppingCart className="cartIcon" onClick={toggleCartHiddenProps} />
+    <div className="relative right-10 ml-16">
+      <div className="cursor-pointer">
+        <FontAwesomeIcon
+          icon={faShoppingCart}
+          size="lg"
+          onClick={handleCartOpen}
+        />
+      </div>
+      {/* <ShoppingCart className="cartIcon" onClick={toggleCartHiddenProps} /> */}
       <div className="">
-        <span className="cartCount">{totalQty(cartItemProps)}</span>
+        <span className="cartCount">0</span>
       </div>
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleCartHiddenProps: () => dispatch(toggleCartHidden()),
-});
-
-const mapStateToProps = (state) => ({
-  cartItemProps: state.cart.cartItems,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
+export default CartIcon;

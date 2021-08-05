@@ -1,25 +1,19 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 import CartIcon from "./CartIcon";
 import CartDropDown from "./CartDropDown";
+import { selectCartOpen } from "../../../features/cartSlice";
 
-const Cart = ({ hiddenProps }) => {
+const Cart = () => {
+  const cartOpen = useSelector(selectCartOpen);
+  console.log(cartOpen);
   return (
     <div>
       <CartIcon />
-      {hiddenProps ? null : <CartDropDown />}
+      {!cartOpen ? null : <CartDropDown />}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  hiddenProps: state.cart.hidden,
-});
-
-// const mapStateToProps = (state) => {
-//   console.log(state.cart.hidden);
-//   return state;
-// };
-
-export default connect(mapStateToProps)(Cart);
+export default Cart;

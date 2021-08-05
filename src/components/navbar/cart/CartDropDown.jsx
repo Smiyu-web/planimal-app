@@ -1,19 +1,20 @@
 import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectCartItems } from "../../../redux/cart/cart.selector";
+import { useSelector } from "react-redux";
 
 import CustomeBtn from "../../UIkit/CustomeBtn";
 import CartItem from "./CartItem";
+import { selectCartItems } from "../../../features/cartSlice";
 
-const CartDropDown = ({ cartItemProps }) => {
-  console.log("cart dropdown", cartItemProps);
+const CartDropDown = () => {
+  const cartItems = useSelector(selectCartItems);
+
+  console.log("cart dropdown", cartItems);
   return (
     <div>
       <div className="cart_dropdown_container">
         <div className="cart_itmes_container">
-          {cartItemProps.length ? (
-            cartItemProps.map((cartItem) => (
+          {cartItems.length ? (
+            cartItems.map((cartItem) => (
               <CartItem key={cartItem.id} item={cartItem} />
             ))
           ) : (
@@ -31,8 +32,4 @@ const CartDropDown = ({ cartItemProps }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  cartItemProps: selectCartItems,
-});
-
-export default connect(mapStateToProps)(CartDropDown);
+export default CartDropDown;

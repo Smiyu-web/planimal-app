@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
-import Cactus from "../../assets/img/cactus.jpeg";
-import Top from "../../assets/img/planimal-top.jpeg";
+import Cactus from "../../img/cactus.jpeg";
+import Top from "../../img/planimal-top.jpeg";
 
 import ImageWrapper from "./ImageWrapper";
 

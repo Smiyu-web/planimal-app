@@ -17,9 +17,9 @@ module.exports = {
       width: {
         "30rem": "30rem",
       },
-      backgroundImage: (theme) => ({
-        "hero-img": "url('/src/assets/img/planimal-top.jpeg')",
-      }),
+      // backgroundImage: (theme) => ({
+      //   "hero-img": "url('/src/assets/img/planimal-top.jpeg')",
+      // }),
     },
   },
   variants: {

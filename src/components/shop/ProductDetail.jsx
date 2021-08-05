@@ -1,11 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
-import Plant from "../../assets/img/plant-1.jpeg";
+import Plant from "../../img/plant-1.jpeg";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import CustomeBtn from "../UIkit/CustomeBtn";
+import { setCartItems } from "../../features/cartSlice";
 
-const ProductDetail = ({ addItemProps }) => {
+const ProductDetail = ({ item }) => {
+  const dispatch = useDispatch();
   return (
     <div>
       <Navbar />
@@ -26,7 +29,7 @@ const ProductDetail = ({ addItemProps }) => {
             <CustomeBtn
               className="customeBtn border-red-300 bg-red-300 text-white"
               button="ADD ITEM"
-              onClick={() => addItemProps()}
+              onClick={() => dispatch(setCartItems(item))}
             />
           </div>
           <p className="text-gray-500 mt-1">2 left</p>

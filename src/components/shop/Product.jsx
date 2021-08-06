@@ -4,20 +4,22 @@ import { useSelector, useDispatch } from "react-redux";
 import Axios from "axios";
 
 import CustomeBtn from "../UIkit/CustomeBtn";
-import { setListItems, selectListItems } from "../../features/itemSlice";
-import { setCartItems } from "../../features/cartSlice";
+import {
+  setListItems,
+  selectListItems,
+  setCurrentItem,
+  selectCurrentItem,
+} from "../../features/itemSlice";
+import { setCartItems, selectCartItems } from "../../features/cartSlice";
 
 const Product = () => {
   const dispatch = useDispatch();
   const lists = useSelector(selectListItems);
 
-  // const [lists, setLists] = useState([]);
-
   useEffect(async () => {
     try {
       const result = await Axios("http://localhost:2000/items");
       dispatch(setListItems(result.data));
-      // setLists(result.data);
     } catch (err) {
       console.log(err);
     }
@@ -27,8 +29,12 @@ const Product = () => {
     <>
       {lists?.map((item) => {
         return (
-          <Link to={`/product/${item._id}`} item={item}>
-            <div key={item._id} className="w-52 m-12 cursor-pointer">
+          <Link to={`/product/${item._id}`} key={item._id}>
+            <div
+              key={item._id}
+              className="w-52 m-12 cursor-pointer"
+              onClick={() => dispatch(setCurrentItem(item))}
+            >
               <div className="product">
                 <div className="product_img">
                   <img

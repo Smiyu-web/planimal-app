@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 import Axios from "axios";
 import { useDispatch } from "react-redux";
 
@@ -8,12 +10,15 @@ import { login } from "../../../features/userSlice";
 import ErrorNotice from "../../UIkit/ErrorNotice";
 
 const Signup = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
+  const [role, setRole] = useState("customer");
+
   const [error, setError] = useState();
 
   const submit = async (e) => {
@@ -25,6 +30,7 @@ const Signup = () => {
         email,
         password,
         confirmPassword: confirmPassword,
+        role,
       };
       await Axios.post("http://localhost:2000/users/signup", newUser);
 
@@ -36,9 +42,10 @@ const Signup = () => {
       );
 
       dispatch(login(loginRef.data.user));
+      history.push("/");
     } catch (err) {
-      // err.response.data.msg && setError(err.response.data.msg);
       console.log(err);
+      err.response.data.msg && setError(err.response.data.msg);
     }
   };
 

@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const userRoute = require("./routes/user.route");
 const itemRoute = require("./routes/item.route");
+const cartRoute = require("./routes/cart.route");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json({ extended: false }));
 
 app.use("/users", userRoute);
 app.use("/items", itemRoute);
+app.use("/cart", cartRoute);
 
 const PORT = process.env.PORT || 2000;
 

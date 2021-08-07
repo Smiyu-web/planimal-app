@@ -5,6 +5,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes SlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
 @layer base {
   body {
     @apply font-raleway select-none tracking-wider font-semibold;
@@ -43,7 +54,7 @@
   /* nabvar */
   .navbar {
     background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.932));
-    @apply fixed top-0 w-screen z-50 h-32 
+    @apply fixed top-0 w-screen z-40 h-32 
     flex justify-between items-center;
   }
   .subtitle {
@@ -53,11 +64,13 @@
   /* cart */
   .cart_dropdown_container {
     @apply absolute w-60 h-96 
-    flex flex-col p-5 border border-gray-800 border-solid
-    bg-white top-24 right-10 z-50;
+    flex flex-col p-5 
+    border border-gray-800 border-solid
+    bg-white top-24 right-10 z-40;
   }
   .cart_itmes_container {
-    @apply flex flex-col overflow-scroll h-60;
+    @apply flex flex-col overflow-scroll 
+    h-70vh;
   }
   .empty_msg {
     @apply text-lg my-12 mx-auto;
@@ -65,12 +78,16 @@
   .cartCount {
     @apply absolute -top-4 right-4 w-7 py-1
     text-sm text-white font-normal text-center
-    bg-secondary rounded-full;
+    bg-red-200 rounded-full;
+  }
+  .open_cart {
+    @apply w-80 h-screen relative top-0 
+    bg-red-100 z-50;
   }
 
   /* header */
   /* .header {
-    @apply relative bg-hero-img bg-cover h-screen w-screen;
+    @apply  bg-hero-img bg-cover h-screen w-screen;
   } */
 
   /* ui */

@@ -7,7 +7,6 @@ import { selectCartItems } from "../../../features/cartSlice";
 
 const CartDropDown = () => {
   const cartItems = useSelector(selectCartItems);
-
   console.log("cart dropdown", cartItems);
   return (
     <div>

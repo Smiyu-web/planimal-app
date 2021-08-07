@@ -8,6 +8,7 @@ const UserDropDown = () => {
 
   const handleLogout = () => {
     dispatch(logout({ user: undefined }));
+    localStorage.clear();
   };
   return (
     <div>

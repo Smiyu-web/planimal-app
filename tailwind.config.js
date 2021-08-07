@@ -12,6 +12,9 @@ module.exports = {
         windsong: ["WindSong", "sans-serif"],
       },
       height: {
+        "10vh": "10vh",
+        "20vh": "20vh",
+        "70vh": "70vh",
         "80vh": "80vh",
       },
       width: {

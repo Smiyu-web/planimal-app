@@ -1,17 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import CartIcon from "./CartIcon";
-import CartDropDown from "./CartDropDown";
+import CartIcon2 from "./CartIcon2";
 import { selectCartOpen } from "../../../features/cartSlice";
+import CartOpen from "./CartOpen";
 
 const Cart = () => {
   const cartOpen = useSelector(selectCartOpen);
-  console.log(cartOpen);
   return (
     <div>
-      <CartIcon />
-      {!cartOpen ? null : <CartDropDown />}
+      <CartIcon2 />
+      {!cartOpen ? null : <CartOpen />}
     </div>
   );
 };

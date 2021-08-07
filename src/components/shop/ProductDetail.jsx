@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Plant from "../../img/plant-1.jpeg";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import CustomeBtn from "../UIkit/CustomeBtn";

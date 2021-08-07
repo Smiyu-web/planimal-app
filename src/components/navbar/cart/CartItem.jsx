@@ -1,15 +1,19 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const CartItem = ({ item }) => {
-  console.log(item.id);
   return (
-    <div className="w-full flex h-20 mb-4">
-      <img className="w-1/3" src={`/assets/uploads/${item.image}`} alt="item" />
-      <div className="w-2/3 flex flex-col items-start justify-center py-2 pl-5">
+    <div className="flex justify-center items-center mb-4">
+      <img className="w-20" src={`/assets/uploads/${item.image}`} alt="item" />
+      <div className="flex flex-col items-start justify-center pl-5">
         <span className="text-sm">{item.title}</span>
         <span className="price">
-          {item.quantity} X ${item.retailPrice}
+          {item.quantity} x ${item.retailPrice}
         </span>
+      </div>
+      <div className="pl-5 cursor-pointer">
+        <FontAwesomeIcon icon={faTrashAlt} size="sm" />
       </div>
     </div>
   );

@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-import { setCartOpen, selectCartItems } from "../../../features/cartSlice";
+import {
+  setCartOpen,
+  selectCartItems,
+  selectCartOpen,
+} from "../../../features/cartSlice";
+import CartOpen from "./CartOpen";
 
 function totalQty(arr) {
   let sum = 0;
@@ -17,6 +22,7 @@ function totalQty(arr) {
 const CartIcon = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+  const cartOpen = useSelector(selectCartOpen);
 
   return (
     <div className="relative right-10 ml-16">

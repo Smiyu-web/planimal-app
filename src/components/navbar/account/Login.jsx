@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import Axios from "axios";
 
 import { login } from ".././../../features/userSlice";
-import ErrorNotice from "../../UIkit/ErrorNotice";
+import Notice from "../../UIkit/Notice";
 
 const Signup = () => {
   const history = useHistory();
@@ -27,8 +27,8 @@ const Signup = () => {
       localStorage.setItem("auth-token", loginRef.data.token);
       history.push("/");
     } catch (err) {
-      console.log(err);
-      err.response?.data.msg && setError(err.response.data.msg);
+      setError(err.response.data.msg);
+      console.log(err.response.data.msg);
     }
   };
 
@@ -36,9 +36,7 @@ const Signup = () => {
     <div className="pt-28 flex flex-col items-center">
       <h2 className="py-6">Log In</h2>
 
-      {error && (
-        <ErrorNotice message={error} clearError={() => setError(undefined)} />
-      )}
+      {error && <Notice message={error} clear={() => setError(undefined)} />}
 
       <div>
         <form onSubmit={submit}>
@@ -68,7 +66,7 @@ const Signup = () => {
       <div className="text-center">
         <p>You don't have an account?</p>
         <Link to="/signup">
-          <a className="a_tag">Sign up</a>
+          <div className="a_tag">Sign up</div>
         </Link>
       </div>
     </div>

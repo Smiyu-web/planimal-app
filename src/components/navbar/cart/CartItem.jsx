@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const CartItem = ({ item }) => {
   return (
@@ -13,7 +13,7 @@ const CartItem = ({ item }) => {
         </span>
       </div>
       <div className="pl-5 cursor-pointer">
-        <FontAwesomeIcon icon={faTrashAlt} size="sm" />
+        <FontAwesomeIcon icon={faTrash} size="sm" />
       </div>
     </div>
   );

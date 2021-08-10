@@ -12,6 +12,7 @@ import Login from "./components/navbar/account/Login";
 import AddProduct from "./components/shop/AddProduct";
 import ProductDetail from "./components/shop/ProductDetail";
 import { login } from "../src/features/userSlice";
+import AddTags from "./components/shop/AddTags";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function App() {
     };
     checkLoggedIn();
   }, []);
+
   return (
     <div className="App">
       <Router>
@@ -54,6 +56,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/add-product" component={AddProduct} />
           <Route path="/product/:id" component={ProductDetail} />
+          <Route path="/addtags" component={AddTags} />
         </div>
       </Router>
     </div>

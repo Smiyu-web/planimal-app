@@ -27,9 +27,15 @@ router.post("/add-item", upload.single("image"), async (req, res, next) => {
   try {
     let { title, description, retailPrice, wholesalePrice, qty, tags, image } =
       req.body;
-    console.log(req.body);
-    if (!title) {
-      return res.status(400).json({ msg: "Please fill out title" });
+    if (
+      !title ||
+      !description ||
+      !retailPrice ||
+      !wholesalePrice ||
+      !qty ||
+      !tags
+    ) {
+      return res.status(400).json({ msg: "Not all fields have been entered" });
     }
 
     const newItem = new Item({

@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import { useHistory } from "react-router-dom";
+import { WithContext as ReactTags } from "react-tag-input";
 
-import ErrorNotice from "../UIkit/ErrorNotice";
+import Notice from "../UIkit/Notice";
+import AddTags from "./AddTags";
+const KeyCodes = {
+  comma: 188,
+  enter: [10, 13],
+};
+
+const delimiters = [...KeyCodes.enter, KeyCodes.comma];
 
 const AddStyle = () => {
   const [title, setTitle] = useState();
@@ -11,7 +20,7 @@ const AddStyle = () => {
   const [qty, setQty] = useState();
   const [tags, setTags] = useState([]);
   const [image, setImage] = useState();
-  const [error, setError] = useState();
+  const [error, setError] = useState(undefined);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -28,19 +37,19 @@ const AddStyle = () => {
       formData.append("image", image);
 
       await Axios.post("http://localhost:2000/items/add-item", formData);
+      setError(`${title} is added!`);
     } catch (err) {
-      console.log(err.response?.data.msg) && setError(err.response.data.msg);
+      // console.log(err.response?.data.msg) &&
+      setError(err.response?.data.msg);
+      console.log(err.response?.data.msg);
     }
-    // router.push(`/style/${_id}`);
   };
 
   return (
     <div className="pt-4 flex flex-col items-center">
       <h2 className="py-6">Add item</h2>
 
-      {error && (
-        <ErrorNotice message={error} clearError={() => setError(undefined)} />
-      )}
+      {error && <Notice message={error} clear={() => setError(undefined)} />}
 
       <div>
         <form onSubmit={submit} encType="multiple/form-data">
@@ -64,7 +73,7 @@ const AddStyle = () => {
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
           </div>
-          <div className="input_wrapper">
+          {/* <div className="input_wrapper">
             <label className="input_label">Tags</label>
             <textarea
               name="tags"
@@ -73,7 +82,8 @@ const AddStyle = () => {
               rows="1"
               onChange={(e) => setTags(e.target.value.split(" "))}
             ></textarea>
-          </div>
+          </div> */}
+          <AddTags tags={tags} setTags={setTags} />
           {/* price option */}
           <div className="flex justify-between px-2">
             <div className="input_price">

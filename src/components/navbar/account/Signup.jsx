@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
 import Axios from "axios";
 import { useDispatch } from "react-redux";
 
-import { Link } from "react-router-dom";
-
 import { login } from "../../../features/userSlice";
-import ErrorNotice from "../../UIkit/ErrorNotice";
+import Notice from "../../UIkit/Notice";
 
 const Signup = () => {
   const history = useHistory();
@@ -18,8 +15,7 @@ const Signup = () => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const role = "customer";
-
-  const [error, setError] = useState();
+  const [error, setError] = useState(undefined);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -44,8 +40,8 @@ const Signup = () => {
       dispatch(login(loginRef.data.user));
       history.push("/");
     } catch (err) {
-      console.log(err);
-      err.response.data.msg && setError(err.response.data.msg);
+      setError(err.response.data.msg);
+      console.log(err.response.data.msg);
     }
   };
 
@@ -53,9 +49,7 @@ const Signup = () => {
     <div className="pt-28 flex flex-col items-center">
       <h2 className="py-6">Sign Up</h2>
 
-      {error && (
-        <ErrorNotice message={error} clearError={() => setError(undefined)} />
-      )}
+      {error && <Notice message={error} clear={() => setError(undefined)} />}
 
       <div>
         <form onSubmit={submit}>
@@ -103,7 +97,7 @@ const Signup = () => {
       <div className="text-center">
         <p>Do you already have an account?</p>
         <Link to="/login">
-          <a>Log in</a>
+          <div className="a_tag">Log in</div>
         </Link>
       </div>
     </div>

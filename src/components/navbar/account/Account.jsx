@@ -1,15 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { setCurrentUser } from "../../../features/userSlice";
+import { setCurrentUser, logout } from "../../../features/userSlice";
 import UserDropDown from "./UserDropDown";
 
 const Account = () => {
+  const dispatch = useDispatch();
   const isUser = useSelector(setCurrentUser);
   const userOpen = false;
+
+  const handleLogout = () => {
+    dispatch(logout({ user: undefined }));
+    localStorage.clear();
+  };
 
   return (
     <div className="flex mr-6">
@@ -17,14 +23,13 @@ const Account = () => {
         Hello,&nbsp;
         {isUser.user?.name ? isUser.user?.name : "guest"}
       </div>
-      <Link to="/signup">
-        <FontAwesomeIcon
-          icon={faUser}
-          size="lg"
-          // onClick={() => setUserOpen(!userOpen)}
-        />
-        {userOpen ? <UserDropDown /> : null}
-      </Link>
+      {!isUser ? (
+        <Link to="/signup">
+          <FontAwesomeIcon icon={faUser} size="lg" />
+        </Link>
+      ) : (
+        <FontAwesomeIcon icon={faUser} size="lg" onClick={handleLogout} />
+      )}
     </div>
   );
 };

@@ -1,5 +1,10 @@
 import React from "react";
+import Axios from "axios";
+import { useHistory } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
@@ -8,9 +13,16 @@ import { setCartItems } from "../../features/cartSlice";
 import { selectCurrentItem } from "../../features/itemSlice";
 
 const ProductDetail = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const currentItem = useSelector(selectCurrentItem);
-  console.log(currentItem);
+  const itemId = currentItem._id;
+  console.log(currentItem._id);
+
+  const handleDelete = async () => {
+    await Axios.delete(`http://localhost:2000/items/${itemId}`);
+    history.push("/");
+  };
 
   return (
     <div>
@@ -20,22 +32,39 @@ const ProductDetail = () => {
           <img
             src={`/assets/uploads/${currentItem.image}`}
             alt="plant"
-            className="w-30rem"
+            className="w-96"
           />
         </div>
         <div className="ml-20 flex flex-col justify-center">
-          <h3>{currentItem.title}</h3>
-          <h5 className="mt-3 text-gray-500">{currentItem.retailPrice} CAD</h5>
-          <h4 className="mt-5">Description</h4>
-          <p className="mt-2">{currentItem.description}</p>
-          <div className="mt-10">
-            <CustomeBtn
-              className="customeBtn border-red-300 bg-red-300 text-white"
-              button="ADD ITEM"
-              onClick={() => dispatch(setCartItems())}
-            />
+          <div className="">
+            <h3>{currentItem.title}</h3>
+            <h5 className="mt-3 text-gray-500">
+              {currentItem.retailPrice} CAD
+            </h5>
+            <h4 className="mt-5">Description</h4>
+            <p className="mt-2">{currentItem.description}</p>
+            <div className="mt-10">
+              <CustomeBtn
+                className="customeBtn border-red-300 bg-red-300 text-white"
+                button="ADD ITEM"
+                onClick={() => dispatch(setCartItems())}
+              />
+            </div>
+            <p className="text-gray-500 mt-1">{currentItem.qty} left</p>
+            <div className="mt-10">
+              <FontAwesomeIcon
+                icon={faTrash}
+                size="sm"
+                className="mr-3 cursor-pointer"
+                onClick={handleDelete}
+              />
+              <FontAwesomeIcon
+                icon={faPen}
+                size="sm"
+                className="cursor-pointer"
+              />
+            </div>
           </div>
-          <p className="text-gray-500 mt-1">{currentItem.qty} left</p>
         </div>
       </div>
       <Footer />

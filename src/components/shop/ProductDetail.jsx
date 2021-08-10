@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +17,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const currentItem = useSelector(selectCurrentItem);
   const itemId = currentItem._id;
-  console.log(currentItem._id);
+  console.log(currentItem);
 
   const handleDelete = async () => {
     await Axios.delete(`http://localhost:2000/items/${itemId}`);
@@ -58,11 +58,13 @@ const ProductDetail = () => {
                 className="mr-3 cursor-pointer"
                 onClick={handleDelete}
               />
-              <FontAwesomeIcon
-                icon={faPen}
-                size="sm"
-                className="cursor-pointer"
-              />
+              <Link to={`/edit-product/${itemId}`}>
+                <FontAwesomeIcon
+                  icon={faPen}
+                  size="sm"
+                  className="cursor-pointer"
+                />
+              </Link>
             </div>
           </div>
         </div>

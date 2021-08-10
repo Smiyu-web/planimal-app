@@ -10,6 +10,7 @@ import Home from "./components/home/Home";
 import Signup from "./components/navbar/account/Signup";
 import Login from "./components/navbar/account/Login";
 import AddProduct from "./components/shop/AddProduct";
+import EditProduct from "./components/shop/EditProduct";
 import ProductDetail from "./components/shop/ProductDetail";
 import { login } from "../src/features/userSlice";
 import AddTags from "./components/shop/AddTags";
@@ -55,6 +56,7 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/add-product" component={AddProduct} />
+          <Route path="/edit-product/:id" component={EditProduct} />
           <Route path="/product/:id" component={ProductDetail} />
           <Route path="/addtags" component={AddTags} />
         </div>

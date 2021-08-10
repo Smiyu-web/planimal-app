@@ -20,8 +20,16 @@ const itemSchema = new mongoose.Schema({
     required: true,
   },
   tags: {
-    type: [String],
+    type: String,
   },
+  // tags: {
+  //   id: {
+  //     type: String,
+  //   },
+  //   text: {
+  //     type: String,
+  //   },
+  // },
   image: {
     type: String,
     require: true,

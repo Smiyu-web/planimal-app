@@ -10,6 +10,14 @@ const KeyCodes = {
 const delimiters = [...KeyCodes.enter, KeyCodes.comma];
 
 const AddTags = ({ tags, setTags }) => {
+  const suggestions = [
+    { id: "monstera", text: "monstera" },
+    { id: "bonsai", text: "bonsai" },
+    { id: "Austria", text: "Austria" },
+    { id: "Costa Rica", text: "Costa Rica" },
+    { id: "Sri Lanka", text: "Sri Lanka" },
+    { id: "Thailand", text: "Thailand" },
+  ];
   const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));
   };
@@ -33,6 +41,7 @@ const AddTags = ({ tags, setTags }) => {
       <div>
         <ReactTags
           tags={tags}
+          suggestions={suggestions}
           handleDelete={handleDelete}
           handleAddition={handleAddition}
           handleDrag={handleDrag}

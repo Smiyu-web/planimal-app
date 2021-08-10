@@ -1,53 +1,51 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { useHistory } from "react-router-dom";
-import { WithContext as ReactTags } from "react-tag-input";
+import { useSelector } from "react-redux";
 
 import Notice from "../UIkit/Notice";
 import AddTags from "./AddTags";
-const KeyCodes = {
-  comma: 188,
-  enter: [10, 13],
-};
+import { selectCurrentItem } from "../../features/itemSlice";
 
-const delimiters = [...KeyCodes.enter, KeyCodes.comma];
+const EditStyle = () => {
+  const currentItem = useSelector(selectCurrentItem);
 
-const AddStyle = () => {
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
-  const [retailPrice, setRetailPrice] = useState();
-  const [wholesalePrice, setWholesalePrice] = useState();
-  const [qty, setQty] = useState();
+  const itemId = currentItem._id;
+
+  const [title, setTitle] = useState(currentItem.title);
+  const [description, setDescription] = useState(currentItem.description);
+  const [retailPrice, setRetailPrice] = useState(currentItem.retailPrice);
+  const [wholesalePrice, setWholesalePrice] = useState(
+    currentItem.wholesalePrice
+  );
+  const [qty, setQty] = useState(currentItem.qty);
   const [tags, setTags] = useState([{ id: "plant", text: "plant" }]);
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(currentItem.image);
   const [error, setError] = useState(undefined);
 
   const submit = async (e) => {
     e.preventDefault();
 
     try {
-      const formData = new FormData();
+      const updatedData = {
+        title,
+        description,
+        retailPrice,
+        wholesalePrice,
+        qty,
+        tags,
+        image,
+      };
 
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("retailPrice", retailPrice);
-      formData.append("wholesalePrice", wholesalePrice);
-      formData.append("qty", qty);
-      formData.append("tags", tags);
-      formData.append("image", image);
-
-      await Axios.post("http://localhost:2000/items/add-item", formData);
-      setError(`${title} is added!`);
+      await Axios.patch(`http://localhost:2000/items/${itemId}`, updatedData);
     } catch (err) {
-      // console.log(err.response?.data.msg) &&
-      setError(err.response?.data.msg);
+      setError(err.response.data.msg);
       console.log(err.response?.data.msg);
     }
   };
 
   return (
     <div className="pt-4 flex flex-col items-center">
-      <h2 className="py-6">Add item</h2>
+      <h2 className="py-6">Edit item</h2>
 
       {error && <Notice message={error} clear={() => setError(undefined)} />}
 
@@ -59,6 +57,7 @@ const AddStyle = () => {
               type="text"
               id="title"
               name="title"
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
@@ -68,21 +67,12 @@ const AddStyle = () => {
             <textarea
               name="description"
               id="description"
+              value={description}
               cols="20"
               rows="2"
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
           </div>
-          {/* <div className="input_wrapper">
-            <label className="input_label">Tags</label>
-            <textarea
-              name="tags"
-              id="tags"
-              cols="20"
-              rows="1"
-              onChange={(e) => setTags(e.target.value.split(" "))}
-            ></textarea>
-          </div> */}
           <AddTags tags={tags} setTags={setTags} />
           {/* price option */}
           <div className="flex justify-between px-2">
@@ -92,6 +82,7 @@ const AddStyle = () => {
                 type="number"
                 id="retailPrice"
                 name="retailPrice"
+                value={retailPrice}
                 style={{ textAlignLast: "center" }}
                 onChange={(e) => setRetailPrice(e.target.value)}
               />
@@ -102,6 +93,7 @@ const AddStyle = () => {
                 type="number"
                 id="wholesalePrice"
                 name="wholesalePrice"
+                value={wholesalePrice}
                 style={{ textAlignLast: "center" }}
                 onChange={(e) => setWholesalePrice(e.target.value)}
               />
@@ -114,6 +106,7 @@ const AddStyle = () => {
                 type="number"
                 id="qty"
                 name="qty"
+                value={qty}
                 style={{ textAlignLast: "center" }}
                 onChange={(e) => setQty(e.target.value)}
               />
@@ -139,4 +132,4 @@ const AddStyle = () => {
   );
 };
 
-export default AddStyle;
+export default EditStyle;

@@ -19,10 +19,12 @@ module.exports = {
       },
       width: {
         "30rem": "30rem",
+        "70rem": "70rem",
+        "80rem": "80rem",
       },
-      // backgroundImage: (theme) => ({
-      //   "hero-img": "url('/src/assets/img/planimal-top.jpeg')",
-      // }),
+      gridTemplateColumns: {
+        cartitem: "110px 160px 50px",
+      },
     },
   },
   variants: {

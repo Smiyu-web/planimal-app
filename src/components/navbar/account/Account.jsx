@@ -5,12 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { setCurrentUser, logout } from "../../../features/userSlice";
-import UserDropDown from "./UserDropDown";
 
 const Account = () => {
   const dispatch = useDispatch();
   const isUser = useSelector(setCurrentUser);
-  const userOpen = false;
 
   const handleLogout = () => {
     dispatch(logout({ user: undefined }));

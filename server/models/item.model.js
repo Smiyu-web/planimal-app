@@ -7,6 +7,7 @@ const itemSchema = new mongoose.Schema({
   },
   description: {
     type: String,
+    required: true,
   },
   retailPrice: {
     type: Number,
@@ -14,14 +15,13 @@ const itemSchema = new mongoose.Schema({
   },
   wholesalePrice: {
     type: Number,
+    required: true,
   },
   qty: {
     type: Number,
     required: true,
   },
-  tags: {
-    type: String,
-  },
+  tags: { type: [Object], blackbox: true },
   // tags: {
   //   id: {
   //     type: String,

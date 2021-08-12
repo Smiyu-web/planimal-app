@@ -1,19 +1,21 @@
 import React from "react";
 import Account from "../navbar/account/Account";
 import Cart from "../navbar/cart/Cart";
-import Menu from "./hamburger/Menu";
+import Hamburger from "./hamburger/Hamburger";
+import Menu from "./Menu";
 
 const Navbar = () => {
   return (
     <div className="navbar">
       <div>
         <Menu />
+        <Hamburger />
       </div>
       <div>
-        <h1>PLANIMAL</h1>
+        <h1 className="text-center">PLANIMAL</h1>
         <h6 className="subtitle">natural interior</h6>
       </div>
-      <div className="flex">
+      <div className="flex justify-end">
         <Account />
         <Cart />
       </div>

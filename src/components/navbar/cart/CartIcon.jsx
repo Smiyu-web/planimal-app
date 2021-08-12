@@ -4,12 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  setCartOpen,
-  selectCartItems,
-  selectCartOpen,
-} from "../../../features/cartSlice";
-import CartOpen from "./CartOpen";
+import { setCartOpen, selectCartItems } from "../../../features/cartSlice";
+// import CartOpen from "./CartOpen";
 
 function totalQty(arr) {
   let sum = 0;
@@ -19,26 +15,25 @@ function totalQty(arr) {
   return sum;
 }
 
-const CartIcon = () => {
+const CartIcon2 = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  const cartOpen = useSelector(selectCartOpen);
-
   return (
-    <div className="relative right-10 ml-16">
-      <div className="cursor-pointer">
-        <FontAwesomeIcon
-          icon={faShoppingCart}
-          size="lg"
-          onClick={() => dispatch(setCartOpen())}
-        />
+    <>
+      <div className="cursor-pointer mr-10">
+        <div className="relative z-20" onClick={() => dispatch(setCartOpen())}>
+          <div>
+            <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+          </div>
+          <div>
+            <span className="cartCount">{totalQty(cartItems)}</span>
+          </div>
+        </div>
       </div>
-      {/* <ShoppingCart className="cartIcon" onClick={toggleCartHiddenProps} /> */}
-      <div>
-        <span className="cartCount">{totalQty(cartItems)}</span>
-      </div>
-    </div>
+
+      {/* <CartOpsen /> */}
+    </>
   );
 };
 
-export default CartIcon;
+export default CartIcon2;

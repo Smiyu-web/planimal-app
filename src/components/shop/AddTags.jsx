@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import { WithContext as ReactTags } from "react-tag-input";
 
 const KeyCodes = {
@@ -11,12 +10,14 @@ const delimiters = [...KeyCodes.enter, KeyCodes.comma];
 
 const AddTags = ({ tags, setTags }) => {
   const suggestions = [
+    { id: "tree", text: "tree" },
     { id: "monstera", text: "monstera" },
     { id: "bonsai", text: "bonsai" },
-    { id: "Austria", text: "Austria" },
-    { id: "Costa Rica", text: "Costa Rica" },
-    { id: "Sri Lanka", text: "Sri Lanka" },
-    { id: "Thailand", text: "Thailand" },
+    { id: "pachira", text: "pachira" },
+    { id: "pothos", text: "pothos" },
+    { id: "alocasia", text: "alocasia" },
+    { id: "big leaf", text: "big leaf" },
+    { id: "small leaf", text: "small leaf" },
   ];
   const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));

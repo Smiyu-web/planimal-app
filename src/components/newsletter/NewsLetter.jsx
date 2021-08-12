@@ -69,7 +69,7 @@ const NewsLetter = () => {
         </div>
         <div className="mt-5">
           <CustomBtn
-            className="border border-primary border-solid"
+            className="customeBtn bg-white text-primary border-primary"
             button="SUBMIT"
           />
         </div>

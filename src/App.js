@@ -14,6 +14,7 @@ import EditProduct from "./components/shop/EditProduct";
 import ProductDetail from "./components/shop/ProductDetail";
 import { login } from "../src/features/userSlice";
 import AddTags from "./components/shop/AddTags";
+import MenuHamburger from "./components/navbar/hamburger/MenuHamburger";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +60,7 @@ function App() {
           <Route path="/edit-product/:id" component={EditProduct} />
           <Route path="/product/:id" component={ProductDetail} />
           <Route path="/addtags" component={AddTags} />
+          <Route path="/menu" component={MenuHamburger} />
         </div>
       </Router>
     </div>

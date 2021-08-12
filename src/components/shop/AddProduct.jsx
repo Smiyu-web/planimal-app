@@ -1,16 +1,8 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { useHistory } from "react-router-dom";
-import { WithContext as ReactTags } from "react-tag-input";
 
 import Notice from "../UIkit/Notice";
 import AddTags from "./AddTags";
-const KeyCodes = {
-  comma: 188,
-  enter: [10, 13],
-};
-
-const delimiters = [...KeyCodes.enter, KeyCodes.comma];
 
 const AddStyle = () => {
   const [title, setTitle] = useState();
@@ -33,13 +25,12 @@ const AddStyle = () => {
       formData.append("retailPrice", retailPrice);
       formData.append("wholesalePrice", wholesalePrice);
       formData.append("qty", qty);
-      formData.append("tags", tags);
+      formData.append("tags", JSON.stringify(tags));
       formData.append("image", image);
 
       await Axios.post("http://localhost:2000/items/add-item", formData);
       setError(`${title} is added!`);
     } catch (err) {
-      // console.log(err.response?.data.msg) &&
       setError(err.response?.data.msg);
       console.log(err.response?.data.msg);
     }

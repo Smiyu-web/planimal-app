@@ -18,7 +18,7 @@ const EditStyle = () => {
     currentItem.wholesalePrice
   );
   const [qty, setQty] = useState(currentItem.qty);
-  const [tags, setTags] = useState([{ id: "plant", text: "plant" }]);
+  const [tags, setTags] = useState(JSON.parse(currentItem.tags));
   const [image, setImage] = useState(currentItem.image);
   const [error, setError] = useState(undefined);
 
@@ -124,7 +124,7 @@ const EditStyle = () => {
             />
           </div>
           <div className="text-center">
-            <input className="input_btn" type="submit" value="Add" />
+            <input className="input_btn" type="submit" value="Edit" />
           </div>
         </form>
       </div>

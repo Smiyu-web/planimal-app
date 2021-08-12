@@ -1,7 +1,6 @@
 import React from "react";
 import Axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -11,13 +10,16 @@ import Footer from "../footer/Footer";
 import CustomeBtn from "../UIkit/CustomeBtn";
 import { setCartItems } from "../../features/cartSlice";
 import { selectCurrentItem } from "../../features/itemSlice";
+import { login } from "../../features/userSlice";
 
 const ProductDetail = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const currentItem = useSelector(selectCurrentItem);
+  const currentUser = useSelector(login);
   const itemId = currentItem._id;
-  console.log(currentItem);
+  const tags = JSON.parse(currentItem.tags);
+  const currentRole = currentUser.payload.user.currentUser.user?.role;
 
   const handleDelete = async () => {
     await Axios.delete(`http://localhost:2000/items/${itemId}`);
@@ -28,44 +30,81 @@ const ProductDetail = () => {
     <div>
       <Navbar />
       <div className="product_detail">
-        <div>
+        <div className="w-96">
           <img
             src={`/assets/uploads/${currentItem.image}`}
             alt="plant"
-            className="w-96"
+            className=""
           />
         </div>
-        <div className="ml-20 flex flex-col justify-center">
+        <div className="flex flex-col justify-center">
           <div className="">
             <h3>{currentItem.title}</h3>
-            <h5 className="mt-3 text-gray-500">
-              {currentItem.retailPrice} CAD
-            </h5>
-            <h4 className="mt-5">Description</h4>
+            {!currentRole === "wholesale" ? (
+              <h5 className="mt-3 text-gray-500">
+                {currentItem.retailPrice} CAD
+              </h5>
+            ) : (
+              <div className="flex mt-8">
+                <ul className="mr-10">
+                  <li>
+                    <p className="font-medium">wholesale price</p>
+                    <h4 className=" text-gray-500">
+                      {currentItem.wholesalePrice} CAD
+                    </h4>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <p className="font-medium">retail price</p>
+                    <h4 className="text-gray-500">
+                      {currentItem.retailPrice} CAD
+                    </h4>
+                  </li>
+                </ul>
+              </div>
+            )}
+
+            <h4 className="mt-10">Description</h4>
             <p className="mt-2">{currentItem.description}</p>
+            <ul className="mt-5 flex">
+              {tags.length
+                ? tags.map((tag) => (
+                    <li key={tag.id} className="tag_li">
+                      {tag.text}
+                    </li>
+                  ))
+                : null}
+            </ul>
             <div className="mt-10">
               <CustomeBtn
                 className="customeBtn border-red-300 bg-red-300 text-white"
                 button="ADD ITEM"
-                onClick={() => dispatch(setCartItems())}
+                onClick={() => dispatch(setCartItems(currentItem))}
               />
             </div>
-            <p className="text-gray-500 mt-1">{currentItem.qty} left</p>
-            <div className="mt-10">
-              <FontAwesomeIcon
-                icon={faTrash}
-                size="sm"
-                className="mr-3 cursor-pointer"
-                onClick={handleDelete}
-              />
-              <Link to={`/edit-product/${itemId}`}>
+            {currentItem.qty ? (
+              <p className="text-gray-500 mt-1">{currentItem.qty} left</p>
+            ) : (
+              <p className="text-gray-500 mt-1"> &infin;</p>
+            )}
+            {currentRole === "admin" ? (
+              <div className="mt-10">
                 <FontAwesomeIcon
-                  icon={faPen}
+                  icon={faTrash}
                   size="sm"
-                  className="cursor-pointer"
+                  className="mr-3 cursor-pointer"
+                  onClick={handleDelete}
                 />
-              </Link>
-            </div>
+                <Link to={`/edit-product/${itemId}`}>
+                  <FontAwesomeIcon
+                    icon={faPen}
+                    size="sm"
+                    className="cursor-pointer"
+                  />
+                </Link>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

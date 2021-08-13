@@ -31,16 +31,16 @@
     @apply font-raleway select-none tracking-wider font-semibold;
   }
   h1 {
-    @apply text-3xl md:text-3xl lg:text-4xl xl:text-6xl;
+    @apply text-2xl md:text-4xl xl:text-6xl;
   }
   h2 {
     @apply text-3xl;
   }
   h3 {
-    @apply text-2xl;
+    @apply md:text-xl lg:text-2xl;
   }
   h4 {
-    @apply text-xl;
+    @apply text-base lg:text-xl;
   }
   h5 {
     @apply text-base;
@@ -65,7 +65,7 @@
   .navbar {
     background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.932));
     @apply fixed top-0 w-screen z-10 h-32 
-     grid grid-flow-row grid-cols-3
+     grid grid-flow-row grid-cols-navbar md:grid-cols-3 
      items-center;
   }
   .subtitle {
@@ -144,16 +144,21 @@
   }
 
   /* product */
-
+  .product {
+    @apply grid grid-flow-row grid-cols-productSm
+    md:grid-cols-product grid-rows-2 
+    gap-10 md:gap-16;
+  }
   .product_btn {
     background-color: rgba(0, 0, 0, 0.2);
     transition: 0.3s ease-in-out;
-    @apply absolute w-full h-80 top-0 left-0
-    opacity-0 hover:opacity-100 pt-60 px-8;
+    @apply absolute w-full h-80 top-0 right-0
+    opacity-0 hover:opacity-100 pt-60;
   }
   .product_detail {
-    @apply grid grid-flow-row grid-cols-2
-    mx-48 mt-48;
+    @apply flex flex-col justify-center items-center
+    md:grid grid-flow-row grid-cols-2
+    md:mx-12 lg:mx-24 xl:mx-48 mt-32 md:mt-48;
   }
   .productImg {
     @apply w-52;
@@ -162,7 +167,7 @@
     @apply relative w-auto h-auto;
   }
   .tag_li {
-    @apply mr-2 px-4 py-1
+    @apply px-4 py-1 
     bg-gray-300 font-semibold text-xs
      rounded-full text-white;
   }
@@ -176,6 +181,16 @@
   .notice_btn {
     @apply w-4 h-4 text-white 
     flex items-center;
+  }
+
+  /* news letter */
+  .email_input {
+    @apply flex flex-col md:flex-row justify-center 
+    items-center md:items-start mt-10;
+  }
+  .cp_iptxt {
+    @apply relative my-3 md:my-10 mx-3
+    w-3/5 md:w-1/3;
   }
 }
 

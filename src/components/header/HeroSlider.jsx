@@ -7,6 +7,7 @@ import ImageWrapper from "./ImageWrapper";
 
 const HeroSlider = () => {
   const settings = {
+    arrows: false,
     infinite: true,
     fade: true,
     slidesToShow: 1,

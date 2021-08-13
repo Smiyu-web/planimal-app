@@ -33,7 +33,7 @@ const CartOpen = () => {
           <div className="cart_itmes_container">
             {select_Cart_Items.length ? (
               select_Cart_Items.map((cartItem) => (
-                <CartItem key={cartItem.id} item={cartItem} />
+                <CartItem key={cartItem._id} item={cartItem} />
               ))
             ) : (
               <div className="empty_msg">Empty</div>

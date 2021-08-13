@@ -15,12 +15,12 @@ function totalQty(arr) {
   return sum;
 }
 
-const CartIcon2 = () => {
+const CartIcon = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   return (
     <>
-      <div className="cursor-pointer mr-10">
+      <div className="cursor-pointer mr-5 md:mr-10">
         <div className="relative z-20" onClick={() => dispatch(setCartOpen())}>
           <div>
             <FontAwesomeIcon icon={faShoppingCart} size="lg" />
@@ -30,10 +30,8 @@ const CartIcon2 = () => {
           </div>
         </div>
       </div>
-
-      {/* <CartOpsen /> */}
     </>
   );
 };
 
-export default CartIcon2;
+export default CartIcon;

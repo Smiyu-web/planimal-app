@@ -16,7 +16,7 @@ const Hamburger = () => {
   };
 
   return (
-    <div className="xl:hidden ml-10">
+    <div className="lg:hidden ml-5 md:ml-10">
       {!menuOpen ? (
         <div className="z-50" onClick={handleMenuOpen}>
           <FontAwesomeIcon icon={faBars} size="lg" />

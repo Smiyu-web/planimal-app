@@ -3,11 +3,11 @@ import styled from "styled-components";
 import CustomBtn from "../UIkit/CustomeBtn";
 
 const Input = styled.div`
-  .cp_iptxt {
+  /* .cp_iptxt {
     position: relative;
     width: 30%;
     margin: 40px 3%;
-  }
+  } */
   .cp_iptxt input[type="email"] {
     font-size: 13px;
     box-sizing: border-box;
@@ -59,11 +59,11 @@ const Input = styled.div`
 
 const NewsLetter = () => {
   return (
-    <div className="mt-20 ">
+    <div className="mt-20">
       <h2 className="text-center">News Letter</h2>
-      <Input className="flex justify-center mt-10">
+      <Input className="email_input">
         <div className="cp_iptxt">
-          <input className="ef" type="email" placeholder="" />
+          <input className="ef" type="email" />
           <label>Email</label>
           <span className="focus_line"></span>
         </div>

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { setCurrentUser, logout } from "../../../features/userSlice";
+import { setClearCart } from "../../../features/cartSlice";
 
 const Account = () => {
   const dispatch = useDispatch();
@@ -12,14 +13,15 @@ const Account = () => {
 
   const handleLogout = () => {
     dispatch(logout({ user: undefined }));
+    dispatch(setClearCart());
     localStorage.clear();
   };
 
   return (
     <div className="flex mr-6">
-      <div className="mr-2 mt-1 text-xs">
-        Hello,&nbsp;
-        {isUser.user?.name ? isUser.user?.name : "guest"}
+      <div className="flex mr-2 mt-1 text-xs">
+        <p className="hidden md:block">Hello,&nbsp;</p>
+        <p>{isUser.user?.name ? isUser.user?.name : "guest"}</p>
       </div>
       {!isUser ? (
         <Link to="/signup">

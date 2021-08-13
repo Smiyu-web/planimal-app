@@ -12,7 +12,7 @@ const Navbar = () => {
         <Hamburger />
       </div>
       <div>
-        <h1 className="text-center">PLANIMAL</h1>
+        <h1 className="md:text-center">PLANIMAL</h1>
         <h6 className="subtitle">natural interior</h6>
       </div>
       <div className="flex justify-end">

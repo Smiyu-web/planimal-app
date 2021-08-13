@@ -24,6 +24,9 @@ module.exports = {
       },
       gridTemplateColumns: {
         cartitem: "110px 160px 50px",
+        navbar: "70px 180px 170px",
+        product: "repeat(6, minmax(250px, 1fr))",
+        productSm: "repeat(6, minmax(150px, 1fr))",
       },
     },
   },

@@ -10,7 +10,7 @@ const Menu = () => {
 
   return (
     <div className="hidden lg:block">
-      <ul className="flex ml-10">
+      <ul className="flex ml-5 md:ml-10">
         <li className="mr-3 cursor-pointer">
           <h6>HOME</h6>
         </li>

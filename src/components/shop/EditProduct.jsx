@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import Notice from "../UIkit/Notice";
@@ -7,8 +8,8 @@ import AddTags from "./AddTags";
 import { selectCurrentItem } from "../../features/itemSlice";
 
 const EditStyle = () => {
+  const history = useHistory();
   const currentItem = useSelector(selectCurrentItem);
-
   const itemId = currentItem._id;
 
   const [title, setTitle] = useState(currentItem.title);
@@ -43,9 +44,14 @@ const EditStyle = () => {
     }
   };
 
+  const handleDelete = async () => {
+    await Axios.delete(`http://localhost:2000/items/${itemId}`);
+    history.push("/");
+  };
+
   return (
-    <div className="pt-4 flex flex-col items-center">
-      <h2 className="py-6">Edit item</h2>
+    <div className="my-16 flex flex-col items-center">
+      <h2 className="mb-10">Edit item</h2>
 
       {error && <Notice message={error} clear={() => setError(undefined)} />}
 
@@ -128,6 +134,7 @@ const EditStyle = () => {
           </div>
         </form>
       </div>
+      <div onClick={handleDelete}>DELETE THIS PRODUCT</div>
     </div>
   );
 };

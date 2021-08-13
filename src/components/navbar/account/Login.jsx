@@ -33,15 +33,15 @@ const Signup = () => {
   };
 
   return (
-    <div className="pt-28 flex flex-col items-center">
-      <h2 className="py-6">Log In</h2>
+    <div className="my-16 flex flex-col items-center">
+      <h2 className="mb-10">Log In</h2>
 
       {error && <Notice message={error} clear={() => setError(undefined)} />}
 
       <div>
         <form onSubmit={submit}>
           <div className="input_wrapper">
-            <label>Email</label>
+            <label className="input_label">Email</label>
             <input
               type="email"
               id="login-email"
@@ -50,7 +50,7 @@ const Signup = () => {
             />
           </div>
           <div className="input_wrapper">
-            <label>Password</label>
+            <label className="input_label">Password</label>
             <input
               type="password"
               id="login-password"

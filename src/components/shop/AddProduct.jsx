@@ -37,8 +37,8 @@ const AddStyle = () => {
   };
 
   return (
-    <div className="pt-4 flex flex-col items-center">
-      <h2 className="py-6">Add item</h2>
+    <div className="my-16 flex flex-col items-center">
+      <h2 className="mt-10">Add item</h2>
 
       {error && <Notice message={error} clear={() => setError(undefined)} />}
 

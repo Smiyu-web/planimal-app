@@ -47,8 +47,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="pt-28 flex flex-col items-center">
-      <h2 className="py-6">Sign Up</h2>
+    <div className="my-16 flex flex-col items-center">
+      <h2 className="mb-10">Sign Up</h2>
 
       {error && <Notice message={error} clear={() => setError(undefined)} />}
 

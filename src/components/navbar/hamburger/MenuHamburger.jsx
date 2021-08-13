@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const MenuHamburger = ({ isOpen }) => {
-  console.log(isOpen);
   const menus = [
     { link: "/", text: "HOME", delay: "0.1s" },
     { link: "/shop/", text: "SHOP", delay: "0.2s" },

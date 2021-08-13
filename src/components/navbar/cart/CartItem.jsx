@@ -1,10 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { setRemoveCartItem } from "../../../features/cartSlice";
 
 const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
   return (
-    // <div className="flex justify-center items-center mb-4">
     <div className="grid grid-cols-cartitem mb-4">
       <div className="flex items-center justify-center">
         <img
@@ -19,7 +22,10 @@ const CartItem = ({ item }) => {
           {item.quantity} x ${item.retailPrice}
         </span>
       </div>
-      <div className="cursor-pointer flex items-center justify-center">
+      <div
+        className="cursor-pointer flex items-center justify-center"
+        onClick={() => dispatch(setRemoveCartItem(item))}
+      >
         <FontAwesomeIcon icon={faTrash} size="sm" />
       </div>
     </div>

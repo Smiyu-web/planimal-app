@@ -4,8 +4,9 @@ import Product from "./Product";
 const Shop = () => {
   return (
     <div>
-      <h2 className="mt-20">SHOP</h2>
-      <Product />
+      <div className="overflow-y-hidden mx-8 md:mx-16 xl:mx-40 my-20">
+        <Product />
+      </div>
     </div>
   );
 };

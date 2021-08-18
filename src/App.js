@@ -12,12 +12,10 @@ import Login from "./components/navbar/account/Login";
 import AddProduct from "./components/shop/AddProduct";
 import EditProduct from "./components/shop/EditProduct";
 import ProductDetail from "./components/shop/ProductDetail";
-import { login, selectCurrentUser } from "../src/features/userSlice";
+import { login } from "../src/features/userSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const currentUser = useSelector(selectCurrentUser);
-  console.log(currentUser);
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -40,7 +38,6 @@ function App() {
           headers: { "x-auth-token": token },
         })
           .then((response) => {
-            // console.log(response.data);
             dispatch(login({ user: response.data.users, token: token }));
           })
           .catch((err) => console.log(err));

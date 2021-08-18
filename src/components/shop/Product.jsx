@@ -9,18 +9,16 @@ import {
   selectListItems,
   setCurrentItem,
 } from "../../features/itemSlice";
-import { login } from "../../features/userSlice";
+import { selectCurrentUser } from "../../features/userSlice";
 import { setCartItems } from "../../features/cartSlice";
 import Loading from "../UIkit/Loading";
 
 const Product = () => {
   const dispatch = useDispatch();
   const lists = useSelector(selectListItems);
-  const currentUser = useSelector(login);
-  const user = currentUser.payload.user.currentUser.user?._id;
+  const currentUser = useSelector(selectCurrentUser);
 
   const [isLoading, setIsLoading] = useState(true);
-  // console.log(isLoading);
 
   useEffect(() => {
     async function fetchData() {
@@ -58,7 +56,7 @@ const Product = () => {
                           className="w-full h-56 md:h-80"
                         />
                       </div>
-                      {user === undefined ? (
+                      {currentUser === "" ? (
                         <Link to="/signup">
                           <div className="product_btn">
                             <CustomeBtn

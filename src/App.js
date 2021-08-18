@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
 import "slick-carousel/slick/slick.css";
@@ -13,8 +13,6 @@ import AddProduct from "./components/shop/AddProduct";
 import EditProduct from "./components/shop/EditProduct";
 import ProductDetail from "./components/shop/ProductDetail";
 import { login, selectCurrentUser } from "../src/features/userSlice";
-import AddTags from "./components/shop/AddTags";
-import MenuHamburger from "./components/navbar/hamburger/MenuHamburger";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,18 +51,16 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <div>
+      <BrowserRouter>
+        <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/add-product" component={AddProduct} />
           <Route path="/edit-product/:id" component={EditProduct} />
           <Route path="/product/:id" component={ProductDetail} />
-          <Route path="/addtags" component={AddTags} />
-          <Route path="/menu" component={MenuHamburger} />
-        </div>
-      </Router>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

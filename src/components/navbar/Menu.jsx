@@ -8,6 +8,7 @@ const Menu = () => {
   const currentUser = useSelector(selectCurrentUser);
   // const currentRole = currentUser.payload.user.currentUser.user?.role;
   const currentRole = currentUser.user;
+  console.log(currentUser);
 
   // console.log("current user: ", currentRole);
 
@@ -25,7 +26,7 @@ const Menu = () => {
         </li>
         {currentRole === "admin" ? (
           <Link to={"/add-product/"}>
-            <li className=" cursor-pointer">
+            <li className="cursor-pointer">
               <h6>ADD PRODUCT</h6>
             </li>
           </Link>

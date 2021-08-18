@@ -12,9 +12,9 @@ let persistor = persistStore(store);
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      {/* <BrowserRouter> */}
+      <App />
+      {/* </BrowserRouter> */}
     </PersistGate>
   </Provider>,
 

@@ -1,7 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
 import Cactus from "../../img/cactus.jpeg";
-import Top from "../../img/planimal-top.jpeg";
+import Bonsai from "../../img/bonsai.jpeg";
+import Monstera from "../../img/monstera.jpeg";
 
 import ImageWrapper from "./ImageWrapper";
 
@@ -18,9 +19,10 @@ const HeroSlider = () => {
   };
   return (
     <div className="mt-32">
-      <Slider {...settings} className="">
+      <Slider {...settings}>
         <ImageWrapper image={Cactus} />
-        <ImageWrapper image={Top} />
+        <ImageWrapper image={Bonsai} />
+        <ImageWrapper image={Monstera} />
       </Slider>
     </div>
   );

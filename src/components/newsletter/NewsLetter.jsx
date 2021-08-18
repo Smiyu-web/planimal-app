@@ -3,27 +3,6 @@ import styled from "styled-components";
 import CustomBtn from "../UIkit/CustomeBtn";
 
 const Input = styled.div`
-  /* .cp_iptxt {
-    position: relative;
-    width: 30%;
-    margin: 40px 3%;
-  } */
-  .cp_iptxt input[type="email"] {
-    font-size: 13px;
-    box-sizing: border-box;
-    width: 100%;
-    letter-spacing: 1px;
-    padding-left: 4em;
-  }
-  .cp_iptxt input[type="email"]:focus {
-    outline: none;
-  }
-  .ef {
-    padding: 4px 0;
-    border: 0;
-    border-bottom: 1px solid #1b2538;
-    background-color: transparent;
-  }
   .ef ~ .focus_line {
     position: absolute;
     bottom: 0;

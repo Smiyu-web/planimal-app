@@ -36,20 +36,6 @@ const Product = () => {
     fetchData();
   }, []);
 
-  // const addItemToCart = async (item) => {
-  //   try {
-  //     const itemId = item._id;
-  //     const userId = currentUser.payload.user.currentUser.user._id;
-
-  //     const newAddItem = { itemId, userId };
-
-  //     await Axios.post("http://localhost:2000/cart/add-to-cart", newAddItem);
-  //     console.log("added" + newAddItem);
-  //   } catch (err) {
-  //     console.log(err.response?.data.msg);
-  //   }
-  // };
-
   return (
     <div>
       {isLoading ? (
@@ -79,7 +65,6 @@ const Product = () => {
                               className="customeBtn bg-white text-primary border-primary"
                               button="ADD ITEM"
                               onClick={() => dispatch(setCartItems(item))}
-                              // onClick={() => addItemToCart(item)}
                             />
                           </div>
                         </Link>
@@ -89,7 +74,6 @@ const Product = () => {
                             className="customeBtn bg-white text-primary border-primary"
                             button="ADD ITEM"
                             onClick={() => dispatch(setCartItems(item))}
-                            // onClick={() => addItemToCart(item)}
                           />
                         </div>
                       )}

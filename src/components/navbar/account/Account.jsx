@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { setCurrentUser, logout } from "../../../features/userSlice";
+import { selectCurrentUser, logout } from "../../../features/userSlice";
 import { setClearCart } from "../../../features/cartSlice";
 
 const Account = () => {
   const dispatch = useDispatch();
-  const isUser = useSelector(setCurrentUser);
+  const isUser = useSelector(selectCurrentUser);
 
   const handleLogout = () => {
     dispatch(logout({ user: undefined }));

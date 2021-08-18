@@ -20,7 +20,7 @@ const Product = () => {
   const user = currentUser.payload.user.currentUser.user?._id;
 
   const [isLoading, setIsLoading] = useState(true);
-  console.log(isLoading);
+  // console.log(isLoading);
 
   useEffect(() => {
     async function fetchData() {

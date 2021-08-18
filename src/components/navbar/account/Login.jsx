@@ -23,7 +23,9 @@ const Signup = () => {
         loginUser
       );
 
-      dispatch(login({ user: loginRef.data.user, token: loginRef.data.token }));
+      await dispatch(
+        login({ user: loginRef.data.user, token: loginRef.data.token })
+      );
       localStorage.setItem("auth-token", loginRef.data.token);
       history.push("/");
     } catch (err) {

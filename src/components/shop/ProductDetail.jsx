@@ -34,11 +34,7 @@ const ProductDetail = () => {
                 <ProductDrop itemId={currentItem._id} />
               ) : null}
             </div>
-            {!currentRole === "wholesale" ? (
-              <h4 className="mt-1 lg:mt-3 text-gray-500">
-                {currentItem.retailPrice} CAD
-              </h4>
-            ) : (
+            {currentRole === "wholesale" ? (
               <div className="flex my-4 lg:my-8">
                 <ul className="mr-10">
                   <li>
@@ -56,6 +52,12 @@ const ProductDetail = () => {
                     </h4>
                   </li>
                 </ul>
+              </div>
+            ) : (
+              <div className=" my-4 lg:my-8">
+                <h4 className="mt-1 lg:mt-3 text-gray-500">
+                  {currentItem.retailPrice} CAD
+                </h4>
               </div>
             )}
 

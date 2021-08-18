@@ -2,11 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { login } from "../../features/userSlice";
+import { login, selectCurrentUser } from "../../features/userSlice";
 
 const Menu = () => {
-  const currentUser = useSelector(login);
-  const currentRole = currentUser.payload.user.currentUser.user?.role;
+  const currentUser = useSelector(selectCurrentUser);
+  // const currentRole = currentUser.payload.user.currentUser.user?.role;
+  const currentRole = currentUser.user;
+
+  // console.log("current user: ", currentRole);
 
   return (
     <div className="hidden lg:block">

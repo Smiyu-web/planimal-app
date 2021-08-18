@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,12 +12,14 @@ import Login from "./components/navbar/account/Login";
 import AddProduct from "./components/shop/AddProduct";
 import EditProduct from "./components/shop/EditProduct";
 import ProductDetail from "./components/shop/ProductDetail";
-import { login } from "../src/features/userSlice";
+import { login, selectCurrentUser } from "../src/features/userSlice";
 import AddTags from "./components/shop/AddTags";
 import MenuHamburger from "./components/navbar/hamburger/MenuHamburger";
 
 function App() {
   const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  console.log(currentUser);
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -28,7 +30,7 @@ function App() {
       }
 
       const tokenRes = await Axios.post(
-        `http://localhost:2000/users/tokenIsValid`,
+        "http://localhost:2000/users/tokenIsValid",
         null,
         {
           headers: { "x-auth-token": token },
@@ -36,7 +38,7 @@ function App() {
       );
 
       if (tokenRes.data) {
-        Axios.get(`http://localhost:2000/users/`, {
+        Axios.get("http://localhost:2000/users/", {
           headers: { "x-auth-token": token },
         })
           .then((response) => {

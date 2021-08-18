@@ -21,7 +21,9 @@ const Account = () => {
     <div className="flex mr-6">
       <div className="flex mr-2 mt-1 text-xs">
         <p className="hidden md:block">Hello,&nbsp;</p>
-        <p>{isUser.user?.name ? isUser.user?.name : "guest"}</p>
+        <p className="hidden sm:block">
+          {isUser.user?.name ? isUser.user?.name : "guest"}
+        </p>
       </div>
       {!isUser ? (
         <Link to="/signup">

@@ -8,12 +8,12 @@ import { setRemoveCartItem } from "../../../features/cartSlice";
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
   return (
-    <div className="grid grid-cols-cartitem mb-4">
+    <div className="grid grid-cols-cartitemSm md:grid-cols-cartitem mb-4">
       <div className="flex items-center justify-center">
         <img
           className="w-20"
           src={`/assets/uploads/${item.image}`}
-          alt="item"
+          alt={item.title}
         />
       </div>
       <div className="flex flex-col justify-center">

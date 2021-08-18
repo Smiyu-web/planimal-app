@@ -21,7 +21,7 @@ const CartOpen = () => {
       {select_Cart_Open ? (
         <div className="open_cart">
           <div
-            className="z-50 mt-5 mr-5 text-right h-10vh"
+            className="z-50 mt-5 mr-9 md:mr-5 text-right h-10vh"
             onClick={() => dispatch(setCartOpen())}
           >
             <FontAwesomeIcon

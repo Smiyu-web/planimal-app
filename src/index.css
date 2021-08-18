@@ -31,7 +31,7 @@
     @apply font-raleway select-none tracking-wider font-semibold;
   }
   h1 {
-    @apply text-2xl md:text-4xl xl:text-6xl;
+    @apply text-xl sm:text-2xl md:text-4xl xl:text-6xl;
   }
   h2 {
     @apply text-3xl;
@@ -65,16 +65,16 @@
   .navbar {
     background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.932));
     @apply fixed top-0 w-screen z-10 h-32 
-     grid grid-flow-row grid-cols-navbar md:grid-cols-3 
-     items-center;
+    grid grid-flow-row grid-cols-navbarXs xs:grid-cols-navbarSm
+    sm:grid-cols-navbar md:grid-cols-3 items-center;
   }
   .subtitle {
-    @apply font-windsong text-right pr-16;
+    @apply font-windsong sm:text-right md:pr-16;
   }
   .hamburger_menu {
     opacity: 0;
     animation: 1s SlideInBottomToTop forwards;
-    @apply w-screen h-screen absolute z-40 bg-white bg-opacity-80
+    @apply w-screen h-screen absolute z-40 bg-white bg-opacity-95
     -inset-x-0 top-0 text-center pt-40;
   }
   .hamburger_ul {
@@ -82,7 +82,6 @@
   }
 
   /* cart */
-
   .cart_itmes_container {
     @apply flex flex-col overflow-scroll 
     h-70vh;

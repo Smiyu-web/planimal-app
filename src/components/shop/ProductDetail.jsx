@@ -21,7 +21,10 @@ const ProductDetail = () => {
       <Navbar />
       <div className="product_detail">
         <div className="w-80 lg:w-96">
-          <img src={`/assets/uploads/${currentItem.image}`} alt="plant" />
+          <img
+            src={`/assets/uploads/${currentItem.image}`}
+            alt={currentItem.title}
+          />
         </div>
         <div className="flex flex-col justify-center mt-5 md:mt-0 mx-14 md:mx-0">
           <div>

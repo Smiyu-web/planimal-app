@@ -25,10 +25,21 @@ module.exports = {
       },
       gridTemplateColumns: {
         cartitem: "110px 160px 50px",
+        cartitemSm: "90px 160px 50px",
         navbar: "70px 180px 170px",
+        navbarSm: "55px 170px 150px",
+        navbarXs: "55px 145px 120px",
         product: "repeat(6, minmax(250px, 1fr))",
         productSm: "repeat(6, minmax(150px, 1fr))",
       },
+    },
+    screens: {
+      all: "0px",
+      xs: "375px",
+      sm: "425px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1440px",
     },
   },
   variants: {

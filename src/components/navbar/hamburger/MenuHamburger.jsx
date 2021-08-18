@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const MenuHamburger = ({ isOpen }) => {
+const MenuHamburger = ({ menuOpen, setMenuOpen }) => {
   const menus = [
     { link: "/", text: "HOME", delay: "0.1s" },
     { link: "/shop/", text: "SHOP", delay: "0.2s" },
@@ -9,10 +11,17 @@ const MenuHamburger = ({ isOpen }) => {
     { link: "/add-product/", text: "ADD PRODUCT ", delay: "0.4s" },
   ];
 
+  const handleMenuClose = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <div>
-      {isOpen ? (
+      {menuOpen ? (
         <div className="hamburger_menu">
+          <div className="text-left ml-20" onClick={handleMenuClose}>
+            <FontAwesomeIcon icon={faTimes} size="lg" />
+          </div>
           <ul className="hamburger_ul">
             {menus.map((menu) => {
               return (

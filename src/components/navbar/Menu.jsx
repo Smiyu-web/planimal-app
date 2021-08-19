@@ -6,7 +6,7 @@ import { selectCurrentUser } from "../../features/userSlice";
 
 const Menu = () => {
   const currentUser = useSelector(selectCurrentUser);
-  const currentRole = currentUser.user;
+  const currentRole = currentUser.user?.role;
 
   return (
     <div className="hidden lg:block">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import CustomeBtn from "../UIkit/CustomeBtn";
 import {
@@ -14,6 +14,7 @@ import { setCartItems } from "../../features/cartSlice";
 import Loading from "../UIkit/Loading";
 
 const Product = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const lists = useSelector(selectListItems);
   const currentUser = useSelector(selectCurrentUser);
@@ -43,10 +44,9 @@ const Product = () => {
           {lists?.map((item) => {
             return (
               <div key={item._id}>
-                <Link to={`/product/${item._id}`}>
                   <div
                     className="cursor-pointer"
-                    onClick={() => dispatch(setCurrentItem(item))}
+                    onClick={() => {dispatch(setCurrentItem(item)); history.push(`/product/${item._id}`)}}
                   >
                     <div className="relative h-56 md:h-80">
                       <div>
@@ -71,7 +71,7 @@ const Product = () => {
                           <CustomeBtn
                             className="customeBtn bg-white text-primary border-primary"
                             button="ADD ITEM"
-                            onClick={() => dispatch(setCartItems(item))}
+                            onClick={(e) => {dispatch(setCartItems(item)); e.stopPropagation();}}
                           />
                         </div>
                       )}
@@ -85,7 +85,6 @@ const Product = () => {
                     </div>
                     <h6 className="text-primary ml-1">{item.brand}</h6>
                   </div>
-                </Link>
               </div>
             );
           })}

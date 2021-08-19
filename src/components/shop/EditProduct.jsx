@@ -19,7 +19,7 @@ const EditStyle = () => {
     currentItem.wholesalePrice
   );
   const [qty, setQty] = useState(currentItem.qty);
-  const [tags, setTags] = useState(JSON.parse(currentItem.tags));
+  const [tags, setTags] = useState(currentItem.tags);
   const [image, setImage] = useState(currentItem.image);
   const [error, setError] = useState(undefined);
 
@@ -38,6 +38,7 @@ const EditStyle = () => {
       };
 
       await Axios.patch(`http://localhost:2000/items/${itemId}`, updatedData);
+      history.push(`/product/${itemId}`);
     } catch (err) {
       setError(err.response.data.msg);
       console.log(err.response?.data.msg);
@@ -128,6 +129,7 @@ const EditStyle = () => {
               filename="image"
               onChange={(e) => setImage(e.target.files[0])}
             />
+            <div>{image}</div>
           </div>
           <div className="text-center">
             <input className="input_btn" type="submit" value="Edit" />

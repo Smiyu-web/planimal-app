@@ -123,6 +123,9 @@
     text-white font-semibold tracking-wider  
     outline-none focus:outline-none;
   }
+  input[type='file'] {
+    color: transparent;
+  }
   .input_price {
     @apply flex flex-col p-2 mb-2 w-32
     border border-solid border-gray-400 rounded-lg;

@@ -13,7 +13,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const currentItem = useSelector(selectCurrentItem);
   const currentUser = useSelector(login);
-  const tags = JSON.parse(currentItem.tags);
+  const tags = currentItem.tags;
   const currentRole = currentUser.payload.user.currentUser.user?.role;
 
   return (

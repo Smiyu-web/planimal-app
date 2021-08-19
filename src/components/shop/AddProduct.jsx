@@ -64,16 +64,6 @@ const AddStyle = () => {
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
           </div>
-          {/* <div className="input_wrapper">
-            <label className="input_label">Tags</label>
-            <textarea
-              name="tags"
-              id="tags"
-              cols="20"
-              rows="1"
-              onChange={(e) => setTags(e.target.value.split(" "))}
-            ></textarea>
-          </div> */}
           <AddTags tags={tags} setTags={setTags} />
           {/* price option */}
           <div className="flex justify-between px-2">

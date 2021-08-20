@@ -28,12 +28,12 @@ const Signup = () => {
         confirmPassword: confirmPassword,
         role,
       };
-      await Axios.post("http://localhost:2000/users/signup", newUser);
+      await Axios.post(`${REACT_APP_API_URL}/users/signup`, newUser);
 
       // auth login
       const loginUser = { email, password };
       const loginRef = await Axios.post(
-        "http://localhost:2000/users/login",
+        `${REACT_APP_API_URL}/users/login`,
         loginUser
       );
 

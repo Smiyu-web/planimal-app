@@ -37,7 +37,7 @@ const EditStyle = () => {
         image,
       };
 
-      await Axios.patch(`http://localhost:2000/items/${itemId}`, updatedData);
+      await Axios.patch(`${REACT_APP_API_URL}/items/${itemId}`, updatedData);
       history.push(`/product/${itemId}`);
     } catch (err) {
       setError(err.response.data.msg);
@@ -46,7 +46,7 @@ const EditStyle = () => {
   };
 
   const handleDelete = async () => {
-    await Axios.delete(`http://localhost:2000/items/${itemId}`);
+    await Axios.delete(`${REACT_APP_API_URL}/items/${itemId}`);
     history.push("/");
   };
 

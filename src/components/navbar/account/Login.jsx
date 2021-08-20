@@ -19,7 +19,7 @@ const Signup = () => {
     try {
       const loginUser = { email, password };
       const loginRef = await Axios.post(
-        "http://localhost:2000/users/login",
+        `${REACT_APP_API_URL}/users/login`,
         loginUser
       );
 

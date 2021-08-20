@@ -19,6 +19,8 @@ const Product = () => {
   const lists = useSelector(selectListItems);
   const currentUser = useSelector(selectCurrentUser);
 
+  console.log(currentUser);
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -76,7 +78,7 @@ const Product = () => {
                           button="ADD ITEM"
                           onClick={(e) => {
                             dispatch(setCartItems(item));
-                            e.stopPropagation();
+                            // e.stopPropagation();
                           }}
                         />
                       </div>

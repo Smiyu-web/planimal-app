@@ -19,7 +19,8 @@ const Signup = () => {
     try {
       const loginUser = { email, password };
       const loginRef = await Axios.post(
-        `${REACT_APP_API_URL}/users/login`,
+        `${process.env.REACT_APP_SERVER_URL}/users/login`,
+
         loginUser
       );
 

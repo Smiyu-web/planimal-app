@@ -28,12 +28,15 @@ const Signup = () => {
         confirmPassword: confirmPassword,
         role,
       };
-      await Axios.post(`${REACT_APP_API_URL}/users/signup`, newUser);
+      await Axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/users/signup`,
+        newUser
+      );
 
       // auth login
       const loginUser = { email, password };
       const loginRef = await Axios.post(
-        `${REACT_APP_API_URL}/users/login`,
+        `${process.env.REACT_APP_SERVER_URL}/users/login`,
         loginUser
       );
 

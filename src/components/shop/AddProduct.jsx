@@ -28,7 +28,10 @@ const AddStyle = () => {
       formData.append("tags", JSON.stringify(tags));
       formData.append("image", image);
 
-      await Axios.post(`${REACT_APP_API_URL}/items/add-item`, formData);
+      await Axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/items/add-item`,
+        formData
+      );
       setError(`${title} is added!`);
     } catch (err) {
       setError(err.response?.data.msg);

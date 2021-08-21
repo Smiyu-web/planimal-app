@@ -37,7 +37,10 @@ const EditStyle = () => {
         image,
       };
 
-      await Axios.patch(`${REACT_APP_API_URL}/items/${itemId}`, updatedData);
+      await Axios.patch(
+        `${process.env.REACT_APP_SERVER_URL}/items/${itemId}`,
+        updatedData
+      );
       history.push(`/product/${itemId}`);
     } catch (err) {
       setError(err.response.data.msg);
@@ -46,7 +49,7 @@ const EditStyle = () => {
   };
 
   const handleDelete = async () => {
-    await Axios.delete(`${REACT_APP_API_URL}/items/${itemId}`);
+    await Axios.delete(`${process.env.REACT_APP_SERVER_URL}/items/${itemId}`);
     history.push("/");
   };
 

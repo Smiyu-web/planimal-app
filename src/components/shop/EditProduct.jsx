@@ -38,7 +38,7 @@ const EditStyle = () => {
       };
 
       await Axios.patch(
-        `${process.env.REACT_APP_SERVER_URL}/items/${itemId}`,
+        `${process.env.REACT_APP_SERVER_URL}items/${itemId}`,
         updatedData
       );
       history.push(`/product/${itemId}`);

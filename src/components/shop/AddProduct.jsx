@@ -29,7 +29,7 @@ const AddStyle = () => {
       formData.append("image", image);
 
       await Axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/items/additem`,
+        `${process.env.REACT_APP_SERVER_URL}/items/add-item`,
         formData
       );
       setError(`${title} is added!`);

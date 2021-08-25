@@ -35,7 +35,7 @@ function App() {
 
       if (tokenRes.data) {
         // Axios.get(`${process.env.REACT_APP_SERVER_URL}/users/`, {
-        Axios.get(`${process.env.REACT_APP_SERVER_URL}users/`, {
+        Axios.get(`${process.env.REACT_APP_SERVER_URL}/users/`, {
           headers: { "x-auth-token": token },
         })
           .then((response) => {

@@ -28,7 +28,6 @@ const Product = () => {
       try {
         setIsLoading(true);
         const result = await Axios(`${process.env.REACT_APP_SERVER_URL}/items`);
-        // const result = await Axios(`${process.env.REACT_APP_SERVER_URL}items`);
 
         dispatch(setListItems(result.data));
       } catch (err) {

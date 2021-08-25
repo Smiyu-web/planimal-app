@@ -41,7 +41,9 @@ const EditStyle = () => {
         `${process.env.REACT_APP_SERVER_URL}/items/${itemId}`,
         updatedData
       );
-      history.push(`/product/${itemId}`);
+      // history.push(`/product/${itemId}`);
+      setError(`${title} is edited!`);
+      history.push("/");
     } catch (err) {
       setError(err.response.data.msg);
       console.log(err.response?.data.msg);

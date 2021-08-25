@@ -8,7 +8,6 @@ const MenuHamburger = ({ menuOpen, setMenuOpen }) => {
     { link: "/", text: "HOME", delay: "0.1s" },
     { link: "/shop/", text: "SHOP", delay: "0.2s" },
     { link: "/wholesale/", text: "WHOLESALE", delay: "0.3s" },
-    { link: "/add-product/", text: "ADD PRODUCT ", delay: "0.4s" },
   ];
 
   const handleMenuClose = () => {
@@ -39,6 +38,18 @@ const MenuHamburger = ({ menuOpen, setMenuOpen }) => {
                 </Link>
               );
             })}
+            <Link to="/add-product/">
+              <li
+                className="my-8"
+                style={{
+                  opacity: "0",
+                  animation: "1s SlideInBottomToTop forwards",
+                  animationDelay: "0.4s",
+                }}
+              >
+                "ADD PRODUCT"
+              </li>
+            </Link>
           </ul>
         </div>
       ) : null}

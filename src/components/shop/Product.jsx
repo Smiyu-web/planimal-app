@@ -19,8 +19,6 @@ const Product = () => {
   const lists = useSelector(selectListItems);
   const currentUser = useSelector(selectCurrentUser);
 
-  console.log(currentUser);
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

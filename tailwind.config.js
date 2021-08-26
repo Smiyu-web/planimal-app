@@ -29,8 +29,8 @@ module.exports = {
         navbar: "70px 180px 170px",
         navbarSm: "55px 170px 150px",
         navbarXs: "55px 145px 120px",
-        product: "repeat(6, minmax(250px, 1fr))",
-        productSm: "repeat(6, minmax(150px, 1fr))",
+        product: "repeat(5, minmax(250px, 1fr))",
+        productSm: "repeat(5, minmax(150px, 1fr))",
       },
     },
     screens: {

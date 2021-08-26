@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Swal from "sweetalert2";
 
 import Notice from "../UIkit/Notice";
 import AddTags from "./AddTags";
@@ -32,7 +33,7 @@ const AddStyle = () => {
         `${process.env.REACT_APP_SERVER_URL}/items/add-item`,
         formData
       );
-      setError(`${title} is added!`);
+      Swal.fire(`Added ${title}!`, "", "success");
     } catch (err) {
       setError(err.response?.data.msg);
       console.log(err.response?.data.msg);

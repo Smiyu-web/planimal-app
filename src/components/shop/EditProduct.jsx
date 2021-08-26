@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -41,8 +42,7 @@ const EditStyle = () => {
         `${process.env.REACT_APP_SERVER_URL}/items/${itemId}`,
         updatedData
       );
-      // history.push(`/product/${itemId}`);
-      setError(`${title} is edited!`);
+      Swal.fire(`Added ${title}!`, "", "success");
       history.push("/");
     } catch (err) {
       setError(err.response.data.msg);

@@ -33,7 +33,7 @@ const AddStyle = () => {
         `${process.env.REACT_APP_SERVER_URL}/items/add-item`,
         formData
       );
-      Swal.fire(`Added ${title}!`, "", "success");
+      Swal.fire(`Added "${title}"!`, "", "success");
     } catch (err) {
       setError(err.response?.data.msg);
       console.log(err.response?.data.msg);

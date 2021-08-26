@@ -42,7 +42,7 @@ const EditStyle = () => {
         `${process.env.REACT_APP_SERVER_URL}/items/${itemId}`,
         updatedData
       );
-      Swal.fire(`Added ${title}!`, "", "success");
+      Swal.fire(`Edited "${title}"!`, "", "success");
       history.push("/");
     } catch (err) {
       setError(err.response.data.msg);

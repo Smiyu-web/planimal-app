@@ -34,7 +34,7 @@ const ProductDetail = () => {
                 <ProductDrop itemId={currentItem._id} />
               ) : null}
             </div>
-            {currentRole === "wholesale" ? (
+            {currentRole === "wholesale" || currentRole === "admin" ? (
               <div className="flex my-4 lg:my-8">
                 <ul className="mr-10">
                   <li>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import CustomeBtn from "../UIkit/CustomeBtn";
 import {
@@ -20,6 +20,8 @@ const Product = () => {
   const currentUser = useSelector(selectCurrentUser);
 
   const [isLoading, setIsLoading] = useState(true);
+
+  console.log(currentUser.token);
 
   useEffect(() => {
     async function fetchData() {
@@ -49,7 +51,11 @@ const Product = () => {
                   className="cursor-pointer"
                   onClick={() => {
                     dispatch(setCurrentItem(item));
-                    history.push(`/product/${item._id}`);
+                    {
+                      currentUser.token === undefined
+                        ? history.push("/signup")
+                        : history.push(`/product/${item._id}`);
+                    }
                   }}
                 >
                   <div className="relative h-56 md:h-80">
@@ -60,30 +66,17 @@ const Product = () => {
                         className="w-full h-56 md:h-80"
                       />
                     </div>
-                    {currentUser === "" ? (
-                      <Link to="/signup">
-                        <div className="product_btn">
-                          <CustomeBtn
-                            className="customeBtn bg-white text-primary border-primary"
-                            button="ADD ITEM"
-                            onClick={() => dispatch(setCartItems(item))}
-                          />
-                        </div>
-                      </Link>
-                    ) : (
-                      <div className="product_btn">
-                        <CustomeBtn
-                          className="customeBtn bg-white text-primary border-primary"
-                          button="ADD ITEM"
-                          onClick={(e) => {
-                            dispatch(setCartItems(item));
-                            // e.stopPropagation();
-                          }}
-                        />
-                      </div>
-                    )}
-                  </div>
 
+                    <div className="product_btn">
+                      <CustomeBtn
+                        className="customeBtn bg-white text-primary border-primary"
+                        button="ADD ITEM"
+                        onClick={() => {
+                          dispatch(setCartItems(item));
+                        }}
+                      />
+                    </div>
+                  </div>
                   <div className="flex justify-between mt-2">
                     <h5>{item.title}</h5>
                     <h4 className="mt-6 text-gray-600">${item.retailPrice}</h4>

@@ -1,8 +1,12 @@
-# MERN app - ecommerce
+# MERN application - ecommerce
 
 https://planimal-app.vercel.app/
 
-> ## Front End
+> ## ABOUT
+
+Planimal is a retail/website plants store. This is MERN application.
+
+### Front End
 
 - React
 
@@ -19,7 +23,7 @@ https://planimal-app.vercel.app/
   - React Spinners
   - React Tag Input
 
-> ## Back End
+### Back End
 
 - MongoDB
 - Express
